@@ -1,0 +1,9 @@
+name: Baking
+version: 1.0
+authors: [BryceBlazeGaming, MrBrayden07, ]
+main: com.bryceblazegaming.baking.baking
+api-version: 1.14
+commands:
+  recipes:
+    description: Opens the recipe GUI
+    usage: /<command> <item>
