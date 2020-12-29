@@ -16,6 +16,7 @@ public class RecipeRemover {
 
         Bukkit.getServer().removeRecipe(NamespacedKey.minecraft("bread"));
         Bukkit.getServer().removeRecipe(NamespacedKey.minecraft("cookie"));
+        Bukkit.getServer().removeRecipe(NamespacedKey.minecraft("cake"));
 
     }
 

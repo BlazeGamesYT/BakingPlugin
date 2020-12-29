@@ -13,9 +13,12 @@ public class baking extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        bakingCommands exec = new bakingCommands();
+
         getServer().getPluginManager().registerEvents(new bakingEvents(), this);
         getServer().getPluginManager().registerEvents(new guiEvents(), this);
-        getCommand("recipes").setExecutor(new bakingCommands());
+        getCommand("recipes").setExecutor(exec);
+        getCommand("bgive").setExecutor(exec);
         guiItems.init();
         ItemManager.init();
         RecipeRemover.init();

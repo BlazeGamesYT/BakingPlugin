@@ -48,6 +48,10 @@ public class recipesGUI implements InventoryHolder {
         item = ItemManager.createItem("§f§lCookie Dough Recipe", Material.LEATHER, Collections.singletonList("§7Shows the recipe."), 3);
         inv.setItem(inv.firstEmpty(), item);
 
+        //Cake Batter
+        item = ItemManager.createItem("§f§lCake Batter Recipe", Material.LEATHER, Collections.singletonList("§7Shows the recipe"), 4);
+        inv.setItem(inv.firstEmpty(), item);
+
         //Exit Button
         item = guiItems.exitButton;
         inv.setItem(8, item);

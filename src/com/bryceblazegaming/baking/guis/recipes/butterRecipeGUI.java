@@ -1,6 +1,7 @@
 package com.bryceblazegaming.baking.guis.recipes;
 
 import com.bryceblazegaming.baking.items.ItemManager;
+import com.bryceblazegaming.baking.items.guiItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
@@ -68,6 +69,14 @@ public class butterRecipeGUI implements InventoryHolder {
         //Recipe
         item = new ItemStack(Material.MILK_BUCKET, 1);
         inv.setItem(13, item);
+
+        //Exit Button
+        item = guiItems.exitButton;
+        inv.setItem(26, item);
+
+        //Back Button
+        item = guiItems.backButton;
+        inv.setItem(18, item);
 
     }
 

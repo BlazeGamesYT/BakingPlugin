@@ -1,6 +1,7 @@
 package com.bryceblazegaming.baking.guis.recipes;
 
 import com.bryceblazegaming.baking.items.ItemManager;
+import com.bryceblazegaming.baking.items.guiItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
@@ -75,6 +76,14 @@ public class cookieDoughGUI implements InventoryHolder {
         inv.setItem(14, item);
         item = ItemManager.butter;
         inv.setItem(23, item);
+
+        //Exit Button
+        item = guiItems.exitButton;
+        inv.setItem(26, item);
+
+        //Back Button
+        item = guiItems.backButton;
+        inv.setItem(18, item);
 
     }
 

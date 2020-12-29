@@ -7,15 +7,16 @@ import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 
 import java.util.Collections;
 
-public class breadDoughGUI implements InventoryHolder {
+public class cakeBatterGUI implements InventoryHolder {
     private Inventory inv;
 
-    public breadDoughGUI() {
+    public cakeBatterGUI() {
 
-        inv = Bukkit.createInventory(this, 27, "Bread Dough");
+        inv = Bukkit.createInventory(this, 27, "Cake Batter");
         init();
 
     }
@@ -51,11 +52,11 @@ public class breadDoughGUI implements InventoryHolder {
         inv.setItem(26, item);
 
         //Recipe Type
-        item = ItemManager.createItem("§f§lCrafting Recipe", Material.CRAFTING_TABLE, Collections.singletonList("§fBread Dough"), 0);
+        item = ItemManager.createItem("§f§lCrafting Recipe", Material.CRAFTING_TABLE, Collections.singletonList("§fCake Batter"), 0);
         inv.setItem(10, item);
 
         //Result
-        item = ItemManager.breadDough;
+        item = ItemManager.cakeBatter;
         inv.setItem(16, item);
 
         //Recipe
@@ -63,6 +64,16 @@ public class breadDoughGUI implements InventoryHolder {
         inv.setItem(12, item);
         inv.setItem(13, item);
         inv.setItem(14, item);
+        inv.setItem(21, item);
+        inv.setItem(22, item);
+        inv.setItem(23, item);
+
+        item = ItemManager.butter;
+        inv.setItem(3, item);
+        item = new ItemStack(Material.EGG, 1);
+        inv.setItem(4, item);
+        item = new ItemStack(Material.SUGAR, 1);
+        inv.setItem(5, item);
 
         //Exit Button
         item = guiItems.exitButton;
@@ -73,6 +84,7 @@ public class breadDoughGUI implements InventoryHolder {
         inv.setItem(18, item);
 
     }
+
 
     @Override
     public Inventory getInventory() {

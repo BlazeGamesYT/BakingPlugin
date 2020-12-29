@@ -1,13 +1,16 @@
 package com.bryceblazegaming.baking.guis.recipes;
 
 import com.bryceblazegaming.baking.items.ItemManager;
+import com.bryceblazegaming.baking.items.guiItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class doughRecipeGUI implements InventoryHolder {
     private Inventory inv;
@@ -50,7 +53,10 @@ public class doughRecipeGUI implements InventoryHolder {
         inv.setItem(26, item);
 
         //Recipe Type
-        item = ItemManager.createItem("§f§lCrafting Recipe", Material.CRAFTING_TABLE, Collections.singletonList("§fDough"), 0);
+        List<String> lore = new ArrayList<>();
+        lore.add("§fDough");
+        lore.add("§fShapeless");
+        item = ItemManager.createItem("§f§lCrafting Recipe", Material.CRAFTING_TABLE, lore, 0);
         inv.setItem(10, item);
 
         //Result
@@ -65,7 +71,14 @@ public class doughRecipeGUI implements InventoryHolder {
         inv.setItem(4, item);
         inv.setItem(12, item);
         inv.setItem(14, item);
-        inv.setItem(22, item);
+
+        //Exit Button
+        item = guiItems.exitButton;
+        inv.setItem(26, item);
+
+        //Back Button
+        item = guiItems.backButton;
+        inv.setItem(18, item);
 
     }
 

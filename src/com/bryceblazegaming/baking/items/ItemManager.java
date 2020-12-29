@@ -17,6 +17,7 @@ public class ItemManager {
     public static ItemStack dough;
     public static ItemStack breadDough;
     public static ItemStack cookieDough;
+    public static ItemStack cakeBatter;
 
     public static void init() {
 
@@ -25,6 +26,7 @@ public class ItemManager {
         createDough();
         createBreadDough();
         createCookieDough();
+        createCakeBatter();
 
     }
 
@@ -58,8 +60,9 @@ public class ItemManager {
         item.setItemMeta(meta);
         flour = item;
 
-
-        ShapelessRecipe recipe = new ShapelessRecipe(NamespacedKey.minecraft("flour"), item);
+        ItemStack result = new ItemStack(item.clone());
+        result.setAmount(3);
+        ShapelessRecipe recipe = new ShapelessRecipe(NamespacedKey.minecraft("flour"), result);
         recipe.addIngredient(1, Material.WHEAT);
         Bukkit.getServer().addRecipe(recipe);
 
@@ -112,12 +115,11 @@ public class ItemManager {
 
         item.setItemMeta(meta);
         dough = item;
-        ShapedRecipe doughRecipe = new ShapedRecipe(NamespacedKey.minecraft("dough"), item);
-        doughRecipe.shape(" F ",
-                          "FEF",
-                          " F ");
-        doughRecipe.setIngredient('E', Material.WATER_BUCKET);
-        doughRecipe.setIngredient('F', new RecipeChoice.ExactChoice(flour));
+        ShapelessRecipe doughRecipe = new ShapelessRecipe(NamespacedKey.minecraft("dough"), item);
+        doughRecipe.addIngredient(1, Material.WATER_BUCKET);
+        doughRecipe.addIngredient(new RecipeChoice.ExactChoice(flour));
+        doughRecipe.addIngredient(new RecipeChoice.ExactChoice(flour));
+        doughRecipe.addIngredient(new RecipeChoice.ExactChoice(flour));
         Bukkit.addRecipe(doughRecipe);
 
     }
@@ -197,6 +199,60 @@ public class ItemManager {
         Bukkit.addRecipe(recipe);
         Bukkit.addRecipe(smelt);
         Bukkit.addRecipe(smoke);
+
+    }
+
+    public static void createCakeBatter() {
+
+        ItemStack item = new ItemStack(Material.LEATHER, 1);
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName("Cake Batter");
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Baking IV");
+        lore.add("");
+        lore.add("§6Cook it to make a cake!");
+        lore.add("");
+        lore.add("§7§lCOMMON");
+        meta.setLore(lore);
+
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setCustomModelData(4);
+
+        item.setItemMeta(meta);
+
+        cakeBatter = item;
+
+        ShapelessRecipe recipe = new ShapelessRecipe(NamespacedKey.minecraft("cake_batter"), cakeBatter);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(dough));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(dough));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(dough));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(dough));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(dough));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(dough));
+        recipe.addIngredient(Material.EGG);
+        recipe.addIngredient(Material.SUGAR);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(butter));
+
+        Bukkit.addRecipe(recipe);
+
+        FurnaceRecipe smelt = new FurnaceRecipe(NamespacedKey.minecraft("cake_from_furnace"), new ItemStack(Material.CAKE),
+                new RecipeChoice.ExactChoice(cakeBatter), 20.0f, 30 * 20);
+        SmokingRecipe smoke = new SmokingRecipe(NamespacedKey.minecraft("cake_from_smoker"), new ItemStack(Material.CAKE),
+                new RecipeChoice.ExactChoice(cakeBatter), 10.0f, 15 * 20);
+        Bukkit.addRecipe(smelt);
+        Bukkit.addRecipe(smoke);
+
+
+    }
+
+    public static void createPieCrust() {
+
+        ItemStack item = new ItemStack(Material.LEATHER, 1);
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName("Pie Crust");
+        //TODO finish item!
 
     }
 

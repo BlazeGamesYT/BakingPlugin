@@ -2,6 +2,7 @@ package com.bryceblazegaming.baking.commands;
 
 import com.bryceblazegaming.baking.guis.recipes.*;
 import com.bryceblazegaming.baking.guis.recipesGUI;
+import com.bryceblazegaming.baking.items.ItemManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -63,12 +64,77 @@ public class bakingCommands implements CommandExecutor {
 
                 }
 
+                if (firstArg.equalsIgnoreCase("cakebatter")) {
+
+                    cakeBatterGUI gui = new cakeBatterGUI();
+                    player.openInventory(gui.getInventory());
+                    player.sendMessage(ChatColor.AQUA + "This is the cake batter recipe!");
+
+                }
+
             }
             else {
                 recipesGUI gui = new recipesGUI();
                 player.openInventory(gui.getInventory());
                 player.sendMessage(ChatColor.AQUA + "Click an item to see its recipe!");
             }
+        }
+
+        if (cmd.getName().equalsIgnoreCase("bgive")) {
+
+            if(args.length >= 1) {
+
+                String firstArg = args[0];
+
+                if (firstArg.equalsIgnoreCase("flour")) {
+
+                    player.getInventory().addItem(ItemManager.flour);
+
+                }
+
+                if (firstArg.equalsIgnoreCase("butter")) {
+
+                    player.getInventory().addItem(ItemManager.butter);
+
+                }
+
+                if (firstArg.equalsIgnoreCase("dough")) {
+
+                    player.getInventory().addItem(ItemManager.dough);
+
+                }
+
+                if (firstArg.equalsIgnoreCase("breaddough")) {
+
+                    player.getInventory().addItem(ItemManager.breadDough);
+
+                }
+
+                if (firstArg.equalsIgnoreCase("cookiedough")) {
+
+                    player.getInventory().addItem(ItemManager.cookieDough);
+
+                }
+
+                if (firstArg.equalsIgnoreCase("cakebatter")) {
+
+                    player.getInventory().addItem(ItemManager.cakeBatter);
+
+                }
+
+                if (firstArg.equalsIgnoreCase("piecrust")) {
+
+                    //TODO give the pie crust
+
+                }
+
+            }
+            else {
+
+                player.sendMessage("Please type the item you want!");
+
+            }
+
         }
         return true;
     }

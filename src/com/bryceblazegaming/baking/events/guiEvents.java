@@ -27,6 +27,13 @@ public class guiEvents implements Listener {
                 player.closeInventory();
             }
 
+            if (event.getCurrentItem().getType() == Material.ARROW) {
+                if (event.getClickedInventory().getHolder() instanceof flourRecipeGUI || event.getClickedInventory().getHolder() instanceof doughRecipeGUI || event.getClickedInventory().getHolder() instanceof butterRecipeGUI || event.getClickedInventory().getHolder() instanceof breadDoughGUI || event.getClickedInventory().getHolder() instanceof cookieDoughGUI) {
+                    recipesGUI gui = new recipesGUI();
+                    player.openInventory(gui.getInventory());
+                }
+            }
+
             // Buttons
             if (event.getCurrentItem().getType() == Material.SUGAR) {
                 flourRecipeGUI gui = new flourRecipeGUI();
@@ -66,21 +73,93 @@ public class guiEvents implements Listener {
                 }
             }
 
+            if (event.getCurrentItem().getType() == Material.LEATHER) {
+                if (event.getCurrentItem().getItemMeta().getCustomModelData() == 4) {
+                    cakeBatterGUI gui = new cakeBatterGUI();
+                    player.openInventory(gui.getInventory());
+                    player.sendMessage(ChatColor.AQUA + "This is the cake batter recipe!");
+                }
+            }
+
         }
+
         else if (event.getClickedInventory().getHolder() instanceof flourRecipeGUI) {
+            Player player = (Player) event.getWhoClicked();
             event.setCancelled(true);
+
+            if (event.getCurrentItem() == guiItems.exitButton) {
+                player.closeInventory();
+            }
+
+            if (event.getCurrentItem() == guiItems.backButton) {
+                recipesGUI gui = new recipesGUI();
+                player.openInventory(gui.getInventory());
+            }
         }
         else if (event.getClickedInventory().getHolder() instanceof butterRecipeGUI) {
+            Player player = (Player) event.getWhoClicked();
             event.setCancelled(true);
+
+            if (event.getCurrentItem() == guiItems.exitButton) {
+                player.closeInventory();
+            }
+
+            if (event.getCurrentItem() == guiItems.backButton) {
+                recipesGUI gui = new recipesGUI();
+                player.openInventory(gui.getInventory());
+            }
         }
         else if (event.getClickedInventory().getHolder() instanceof doughRecipeGUI) {
+            Player player = (Player) event.getWhoClicked();
             event.setCancelled(true);
+
+            if (event.getCurrentItem() == guiItems.exitButton) {
+                player.closeInventory();
+            }
+
+            if (event.getCurrentItem() == guiItems.backButton) {
+                recipesGUI gui = new recipesGUI();
+                player.openInventory(gui.getInventory());
+            }
         }
         else if (event.getClickedInventory().getHolder() instanceof breadDoughGUI) {
+            Player player = (Player) event.getWhoClicked();
             event.setCancelled(true);
+
+            if (event.getCurrentItem() == guiItems.exitButton) {
+                player.closeInventory();
+            }
+
+            if (event.getCurrentItem() == guiItems.backButton) {
+                recipesGUI gui = new recipesGUI();
+                player.openInventory(gui.getInventory());
+            }
         }
         else if (event.getClickedInventory().getHolder() instanceof cookieDoughGUI) {
+            Player player = (Player) event.getWhoClicked();
             event.setCancelled(true);
+
+            if (event.getCurrentItem() == guiItems.exitButton) {
+                player.closeInventory();
+            }
+
+            if (event.getCurrentItem() == guiItems.backButton) {
+                recipesGUI gui = new recipesGUI();
+                player.openInventory(gui.getInventory());
+            }
+        }
+        else if (event.getClickedInventory().getHolder() instanceof cakeBatterGUI) {
+            Player player = (Player) event.getWhoClicked();
+            event.setCancelled(true);
+
+            if (event.getCurrentItem() == guiItems.exitButton) {
+                player.closeInventory();
+            }
+
+            if (event.getCurrentItem() == guiItems.backButton) {
+                recipesGUI gui = new recipesGUI();
+                player.openInventory(gui.getInventory());
+            }
         }
     }
 
